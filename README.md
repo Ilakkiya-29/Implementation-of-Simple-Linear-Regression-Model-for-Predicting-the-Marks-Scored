@@ -20,6 +20,36 @@ Program to implement the simple linear regression model for predicting the marks
 Developed by: 
 RegisterNumber:  
 */
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Dataset: Study hours and marks scored
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+Y = np.array([35, 40, 50, 60, 65])
+
+# Create the model
+model = LinearRegression()
+
+# Train the model
+model.fit(X, Y)
+
+# Predict marks
+Y_pred = model.predict(X)
+
+# Display results
+print("Slope (m):", model.coef_[0])
+print("Intercept (b):", model.intercept_)
+print("Regression Equation: Y = {:.2f}X + {:.2f}".format(model.coef_[0], model.intercept_))
+
+# Plotting
+plt.scatter(X, Y, label="Actual Marks")
+plt.plot(X, Y_pred, label="Predicted Line")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks Scored")
+plt.legend()
+plt.show()
+O
 ```
 
 ## Output:
