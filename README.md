@@ -53,7 +53,8 @@ O
 ```
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+<img width="562" height="455" alt="image" src="https://github.com/user-attachments/assets/37066788-a8b0-4052-abb2-58032ecf2163" />
+
 
 
 ## Result:
