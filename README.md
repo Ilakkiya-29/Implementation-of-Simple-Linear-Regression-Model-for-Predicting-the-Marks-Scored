@@ -56,7 +56,7 @@ O
 ```
 
 ## Output:
-<img width="800" height="533" alt="image" src="https://github.com/user-attachments/assets/04f461f1-4dc2-49b1-907b-9dbc5f7b9686" />
+![WhatsApp Image 2026-01-27 at 9 34 12 AM](https://github.com/user-attachments/assets/523b50c1-6e55-4735-91bd-0c4d6ef70fda)
 
 
 
