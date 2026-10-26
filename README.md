@@ -23,43 +23,39 @@ Program to implement the simple linear regression model for predicting the marks
 Developed by: Ilakkiya K
 RegisterNumber: 212225040130
 */
-import numpy as np
+import pandas as pd
+import numpy as np 
 import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-
-# Dataset: Study hours and marks scored
-X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
-Y = np.array([35, 40, 50, 60, 65])
-
-# Create the model
-model = LinearRegression()
-
-# Train the model
-model.fit(X, Y)
-
-# Predict marks
-Y_pred = model.predict(X)
-
-# Display results
-print("Slope (m):", model.coef_[0])
-print("Intercept (b):", model.intercept_)
-print("Regression Equation: Y = {:.2f}X + {:.2f}".format(model.coef_[0], model.intercept_))
-
-# Plotting
-plt.scatter(X, Y, label="Actual Marks")
-plt.plot(X, Y_pred, label="Predicted Line")
-plt.xlabel("Study Hours")
-plt.ylabel("Marks Scored")
+df = pd.read_csv('exp_2_dataset_student_scores.csv')
+print("First 5 rows:\n", df.head(), "\n")
+print("Last 5 rows:\n", df.tail(), "\n")
+X = df.iloc[:, :-1].values
+Y = df.iloc[:, -1].values
+print("X (features):", X.flatten())
+print("Y (targets):", Y)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1/3, random_state=0)
+print("\nTraining samples:", len(X_train), " Testing samples:", len(X_test))
+regressor = LinearRegression()
+regressor.fit(X_train, Y_train)
+Y_pred = regressor.predict(X_test)
+print("\nPredicted values:", np.round(Y_pred, 2))
+print("Actual values   :", Y_test)
+plt.figure(figsize=(6,4))
+plt.scatter(X_train, Y_train, color="orange", label="Training data")
+plt.plot(X_train, regressor.predict(X_train), color="red", label="Fitted line")
+plt.title("Hours vs Scores (Training set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
 plt.legend()
+plt.grid(True)
 plt.show()
-O
 ```
 
 ## Output:
-![WhatsApp Image 2026-01-27 at 9 34 12 AM](https://github.com/user-attachments/assets/523b50c1-6e55-4735-91bd-0c4d6ef70fda)
-
-
-
+<img width="661" height="478" alt="image" src="https://github.com/user-attachments/assets/d0bab55b-1b90-448a-ab9f-273941b8b96d" />
 
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
